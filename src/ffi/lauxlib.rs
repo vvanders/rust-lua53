@@ -28,7 +28,7 @@ use ffi::lua::{lua_State, lua_CFunction, lua_Integer, lua_Number};
 use ffi::luaconf::LUAL_BUFFERSIZE;
 use std::ptr;
 
-pub use super::glue::LUAL_NUMSIZES;
+pub use super::glue::EXT_LUAL_NUMSIZES;
 pub use super::glue::LUA_FILEHANDLE;
 
 // extra error code for 'luaL_load'
@@ -43,7 +43,7 @@ pub struct luaL_Reg {
 
 #[inline(always)]
 pub unsafe fn luaL_checkversion(L: *mut lua_State) {
-  luaL_checkversion_(L, lua::LUA_VERSION_NUM as lua_Number, LUAL_NUMSIZES as size_t)
+  luaL_checkversion_(L, lua::LUA_VERSION_NUM as lua_Number, EXT_LUAL_NUMSIZES as size_t)
 }
 
 extern {

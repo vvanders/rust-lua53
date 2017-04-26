@@ -75,16 +75,16 @@ pub const LUA_RIDX_GLOBALS: lua_Integer = 2;
 pub const LUA_RIDX_LAST: lua_Integer = LUA_RIDX_GLOBALS;
 
 /// A Lua number, usually equivalent to `f64`.
-pub type lua_Number = luaconf::LUA_NUMBER;
+pub type lua_Number = luaconf::lua_Number;
 
 /// A Lua integer, usually equivalent to `i64`.
-pub type lua_Integer = luaconf::LUA_INTEGER;
+pub type lua_Integer = luaconf::lua_Integer;
 
 // unsigned integer type
-pub type lua_Unsigned = luaconf::LUA_UNSIGNED;
+pub type lua_Unsigned = luaconf::lua_Unsigned;
 
 // type for continuation-function contexts
-pub type lua_KContext = luaconf::LUA_KCONTEXT;
+pub type lua_KContext = luaconf::lua_KContext;
 
 /// Type for native functions that can be passed to Lua.
 pub type lua_CFunction = Option<unsafe extern "C" fn(L: *mut lua_State) -> c_int>;
@@ -275,7 +275,7 @@ extern {
 // here, implemented as Rust functions
 #[inline(always)]
 pub unsafe fn lua_getextraspace(L: *mut lua_State) -> *mut c_void {
-  L.offset(-super::glue::LUA_EXTRASPACE as isize) as *mut c_void
+  L.offset(-super::glue::EXT_LUA_EXTRASPACE as isize) as *mut c_void
 }
 
 #[inline(always)]
