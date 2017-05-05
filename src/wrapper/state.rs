@@ -574,7 +574,7 @@ impl State {
   }
 
   /// Maps to `lua_type`.
-  pub fn type_of(&mut self, index: Index) -> Option<Type> {
+  pub fn type_of(&self, index: Index) -> Option<Type> {
     let result = unsafe { ffi::lua_type(self.L, index) };
     Type::from_c_int(result)
   }
@@ -600,7 +600,7 @@ impl State {
   }
 
   /// Maps to `lua_tointegerx`.
-  pub fn to_integerx(&mut self, index: Index) -> Option<Integer> {
+  pub fn to_integerx(&self, index: Index) -> Option<Integer> {
     let mut isnum: c_int = 0;
     let result = unsafe { ffi::lua_tointegerx(self.L, index, &mut isnum) };
     if isnum == 0 {
@@ -1082,7 +1082,7 @@ impl State {
   }
 
   /// Maps to `lua_tointeger`.
-  pub fn to_integer(&mut self, index: Index) -> Integer {
+  pub fn to_integer(&self, index: Index) -> Integer {
     unsafe { ffi::lua_tointeger(self.L, index) }
   }
 
@@ -1315,7 +1315,7 @@ impl State {
   /// that method name is used for the `ToString` trait. This function returns
   /// a reference to the string at the given index, on which `to_owned` may be
   /// called.
-  pub fn to_str_in_place(&mut self, index: Index) -> Option<&str> {
+  pub fn to_str_in_place(&self, index: Index) -> Option<&str> {
     let mut len = 0;
     let ptr = unsafe { ffi::lua_tolstring(self.L, index, &mut len) };
     if ptr.is_null() {
