@@ -344,9 +344,11 @@ impl State {
   pub fn new() -> State {
     unsafe {
       let state = ffi::lua_newstate(Some(alloc_func), ptr::null_mut());
+      /*
       let extra_ptr = ffi::lua_getextraspace(state) as ExtraHolder;
       let mutex = Box::new(Mutex::new(None));
       *extra_ptr = Box::into_raw(mutex);
+      */
       State { L: state, owned: true }
     }
   }
@@ -1626,6 +1628,7 @@ impl State {
 
 impl Drop for State {
   fn drop(&mut self) {
+    /*
     if self.owned {
       unsafe {
         let extra_ptr = ffi::lua_getextraspace(self.L) as ExtraHolder;
@@ -1633,5 +1636,6 @@ impl Drop for State {
         ffi::lua_close(self.L);
       }
     }
+    */
   }
 }
