@@ -1079,7 +1079,7 @@ impl State {
   }
 
   /// Maps to `lua_tonumber`.
-  pub fn to_number(&mut self, index: Index) -> Number {
+  pub fn to_number(&self, index: Index) -> Number {
     unsafe { ffi::lua_tonumber(self.L, index) }
   }
 
