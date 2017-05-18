@@ -30,6 +30,8 @@ fn prebuild() -> io::Result<()> {
     let lua_dir = PathBuf::new().join("lua-source").join("src");
     let mut config = gcc::Config::new();
 
+    config.define("LUA_32BITS", None);
+
     let sources = find_sources(&lua_dir, "c");
 
     for source in sources {
