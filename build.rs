@@ -31,6 +31,7 @@ fn prebuild() -> io::Result<()> {
     let mut config = gcc::Config::new();
 
     config.define("LUA_32BITS", None);
+    config.define("LUA_COMPAT_LOADSTRING", None);
 
     let sources = find_sources(&lua_dir, "c");
 
