@@ -28,7 +28,7 @@ pub use super::glue::lua_Integer;
 pub use super::glue::lua_Unsigned;
 
 pub use super::glue::{LUA_IDSIZE};
-pub use super::glue::{LUA_MININTEGER, LUA_MAXINTEGER};
+pub use super::glue::{EXT_LUA_MININTEGER, EXT_LUA_MAXINTEGER};
 
 pub use super::glue::LUAI_MAXSTACK;
 pub use super::glue::EXT_LUAL_NUMSIZES;
@@ -39,7 +39,7 @@ use libc::c_int;
 
 #[inline(always)]
 pub unsafe fn lua_numtointeger(n: lua_Number, p: *mut lua_Integer) -> c_int {
-  if n >= (LUA_MININTEGER as lua_Number) && n < -(LUA_MININTEGER as lua_Number) {
+  if n >= (EXT_LUA_MININTEGER as lua_Number) && n < -(EXT_LUA_MININTEGER as lua_Number) {
     *p = n as lua_Integer;
     1
   } else {

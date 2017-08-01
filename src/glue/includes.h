@@ -17,3 +17,6 @@ static const char* EXT_LUA_BITLIBNAME = "bit32";
 static const char* EXT_LUA_MATHLIBNAME = "math";
 static const char* EXT_LUA_DBLIBNAME = "debug";
 static const char* EXT_LUA_LOADLIBNAME = "package";
+
+static const int EXT_LUA_MININTEGER = LUA_MININTEGER;
+static const int EXT_LUA_MAXINTEGER = LUA_MAXINTEGER;
