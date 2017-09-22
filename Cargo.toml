@@ -15,7 +15,7 @@ build = "build.rs"
 links = "lua"
 
 [build-dependencies]
-gcc = { path = "../gcc-rs" }
+cc = "1.0"
 bindgen = "0.23.1"
 
 [dependencies]

@@ -1,4 +1,4 @@
-extern crate gcc;
+extern crate cc;
 extern crate bindgen;
 
 use std::fs;
@@ -28,7 +28,7 @@ fn find_sources<S>(path_str: S, ext: &str) -> Vec<PathBuf> where S: Into<PathBuf
 fn prebuild() -> io::Result<()> {
     let build_dir = PathBuf::from(env::var_os("OUT_DIR").unwrap());
     let lua_dir = PathBuf::new().join("lua-source").join("src");
-    let mut config = gcc::Config::new();
+    let mut config = cc::Build::new();
 
     config.define("LUA_32BITS", None);
     config.define("LUA_COMPAT_LOADSTRING", None);
